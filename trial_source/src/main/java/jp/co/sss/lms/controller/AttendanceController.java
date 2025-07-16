@@ -133,7 +133,7 @@ public class AttendanceController {
 	public String complete(AttendanceForm attendanceForm, Model model, BindingResult result)
 			throws ParseException {
 
-		// 更新
+		// 更新(変更)
 		String message = studentAttendanceService.update(attendanceForm);
 		model.addAttribute("message", message);
 		// 一覧の再取得
