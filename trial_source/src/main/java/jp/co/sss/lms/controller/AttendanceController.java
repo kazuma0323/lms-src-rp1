@@ -47,6 +47,10 @@ public class AttendanceController {
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 
+		//未入力
+		int notEnterCount = studentAttendanceService.NotEnterCount();
+		boolean a = notEnterCount > 0;
+		model.addAttribute("a",a);
 		return "attendance/detail";
 	}
 
@@ -133,7 +137,7 @@ public class AttendanceController {
 	public String complete(AttendanceForm attendanceForm, Model model, BindingResult result)
 			throws ParseException {
 
-		// 更新(変更)
+		// 更新
 		String message = studentAttendanceService.update(attendanceForm);
 		model.addAttribute("message", message);
 		// 一覧の再取得

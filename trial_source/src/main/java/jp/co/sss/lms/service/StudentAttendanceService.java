@@ -44,6 +44,13 @@ public class StudentAttendanceService {
 	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
 
+	
+	public int NotEnterCount() {
+		return tStudentAttendanceMapper.notEnterCount(
+				
+				loginUserDto.getLmsUserId(),new Date() , Constants.DB_FLG_FALSE);
+	}
+	
 	/**
 	 * 勤怠一覧情報取得
 	 * 
@@ -333,5 +340,4 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
-
 }

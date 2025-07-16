@@ -87,6 +87,20 @@
 			return hours + ':' + minutes;
 		}
 	</script>
+	
+
+	<script th:inline = "javascript">
+		let a = true;
+		 window.onload = function () {
+          if (a > 0) {
+            alert("過去日の勤怠に未入力があります。");
+          }else{
+          alert("打刻します。よろしいですか？")
+        };
+
+        }
+		alert(notentercount)
+		</script>
 
 </body>
 </html>
