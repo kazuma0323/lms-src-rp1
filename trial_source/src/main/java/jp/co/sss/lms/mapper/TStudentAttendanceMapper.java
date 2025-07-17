@@ -20,7 +20,7 @@ public interface TStudentAttendanceMapper {
 	
 	//未入力
 		Integer notEnterCount(@Param("lmsUserId") Integer lmsUserId,
-				@Param("trainingDate") Date trainingDate, @Param("deleteFlg") Short deleteFlg);
+				@Param("deleteFlg") Short deleteFlg, @Param("trainingDate") Date trainingDate);
 		
 	/**
 	 * 勤怠情報（受講生入力）取得（LMSユーザーID）

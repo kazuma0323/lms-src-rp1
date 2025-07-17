@@ -44,14 +44,7 @@ public class StudentAttendanceService {
 	@Autowired
 	private TStudentAttendanceMapper tStudentAttendanceMapper;
 
-	
-	public int NotEnterCount() {
-		return tStudentAttendanceMapper.notEnterCount(
-				
-				loginUserDto.getLmsUserId(),new Date() , Constants.DB_FLG_FALSE);
-	}
-	
-	/**
+	/*
 	 * 勤怠一覧情報取得
 	 * 
 	 * @param courseId
@@ -340,4 +333,25 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws ParseException 
+	 */
+	public boolean notEnterCount(Integer lmsUserId) {
+
+		Date today = new Date();
+
+		int EnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId,Constants.DB_FLG_FALSE,
+				dateUtil.stringToSqlDate(dateUtil.toString(today, Constants.DEFAULT_DATE_FORMAT)));
+		
+//		int EnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId,
+//				dateUtil.stringToSqlDate(dateUtil.toString(today, Constants.DEFAULT_DATE_FORMAT)),
+//				Constants.DB_FLG_FALSE);
+
+
+		return EnterCount > 0;
+	}
 }
+

@@ -48,9 +48,9 @@ public class AttendanceController {
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
 
 		//未入力
-		int notEnterCount = studentAttendanceService.NotEnterCount();
-		boolean a = notEnterCount > 0;
-		model.addAttribute("a",a);
+//		boolean notEnterCount = studentAttendanceService.NotEnterCount(loginUserDto.getLmsUserId());
+	
+		model.addAttribute("a",studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId()));
 		return "attendance/detail";
 	}
 
