@@ -42,17 +42,14 @@
 			<div class="form-group">
 				<small id="now"></small>
 			</div>
-			
+
 			<div class="form-group">
 				<form th:action="@{/attendance/detail}" method="post" class="form-inline">
-					<input type="submit" value="出勤" name="punchIn" class="btn btn-default" />
-					<input type="submit" value="退勤" name="punchOut" class="btn btn-default" />
+					<input type="submit" value="出勤" name="punchIn" class="btn btn-default"
+						onclick="return punchCheck();" />
+					<input type="submit" value="退勤" name="punchOut" class="btn btn-default"
+						onclick="return punchCheck();" />
 
-					<script>
-						window.onload =  function(){
-						if(confirm("打刻します。よろしいですか？"));
-						}
-					</script>
 
 				</form>
 			</div>
@@ -109,9 +106,19 @@
 		}
 	</script>
 
-	<!--	<script>-->
-	<!--		window.confirm("打刻します。よろしいですか？");		-->
-	<!--	</script>-->
+
+<!-- 出勤・退勤ボタンクリック時アラートが出る-->
+	<script>
+		function punchCheck() {
+			if (confirm("打刻します。よろしいですか？")) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+	</script>
+
 
 
 

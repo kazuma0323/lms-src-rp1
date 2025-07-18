@@ -18,8 +18,14 @@ import jp.co.sss.lms.entity.TStudentAttendance;
 public interface TStudentAttendanceMapper {
 
 	
-	//未入力
-		Integer notEnterCount(@Param("lmsUserId") Integer lmsUserId,
+/**
+ * 
+ * @param lmsUserId
+ * @param deleteFlg
+ * @param trainingDate
+ * @return 
+ */
+	Integer notEnterCount(@Param("lmsUserId") Integer lmsUserId,
 				@Param("deleteFlg") Short deleteFlg, @Param("trainingDate") Date trainingDate);
 		
 	/**

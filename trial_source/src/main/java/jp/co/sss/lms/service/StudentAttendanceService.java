@@ -336,22 +336,18 @@ public class StudentAttendanceService {
 
 	/**
 	 * 
+	 * @param lmsUserId
 	 * @return
-	 * @throws ParseException 
 	 */
 	public boolean notEnterCount(Integer lmsUserId) {
 
 		Date today = new Date();
 
-		int EnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId,Constants.DB_FLG_FALSE,
+		int enterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId, Constants.DB_FLG_FALSE,
 				dateUtil.stringToSqlDate(dateUtil.toString(today, Constants.DEFAULT_DATE_FORMAT)));
-		
-//		int EnterCount = tStudentAttendanceMapper.notEnterCount(lmsUserId,
-//				dateUtil.stringToSqlDate(dateUtil.toString(today, Constants.DEFAULT_DATE_FORMAT)),
-//				Constants.DB_FLG_FALSE);
 
+		//enterCountが1以上の場合、アラートが出る
+		return enterCount > 0;
 
-		return EnterCount > 0;
 	}
 }
-
