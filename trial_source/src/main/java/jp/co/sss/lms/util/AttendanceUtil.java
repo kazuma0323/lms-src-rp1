@@ -147,4 +147,14 @@ public class AttendanceUtil {
 		return false;
 	}
 
+	public LinkedHashMap<String, String> sethour() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
+	public LinkedHashMap<String, String> setminute() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }
