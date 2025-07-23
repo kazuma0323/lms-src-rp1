@@ -35,9 +35,12 @@ public class AttendanceForm {
 	//Task26
 	
 	//時間マップ
-	private LinkedHashMap<String, String> hour;
+//	private Map<String, String> hour;
 	//分マップ
-	private LinkedHashMap<String, String> minute;
+//	private Map<String, String> minute;
+	private List<String>nakanukeTime;
+	private List<Integer>hour;
+	private List<Integer>minute;
 	
 
 }

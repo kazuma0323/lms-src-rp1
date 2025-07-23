@@ -219,9 +219,10 @@ public class StudentAttendanceService {
 		attendanceForm.setUserName(loginUserDto.getUserName());
 		attendanceForm.setLeaveFlg(loginUserDto.getLeaveFlg());
 		attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
-		
-		attendanceForm.setHour(attendanceUtil.sethour());
-		attendanceForm.setMinute(attendanceUtil.setminute());
+		//Task26
+		attendanceForm.setNakanukeTime(attendanceUtil.getNaknukeTime());
+		attendanceForm.setHour(attendanceUtil.gethour());
+		attendanceForm.setMinute(attendanceUtil.getminute());
 
 		// 途中退校している場合のみ設定
 		if (loginUserDto.getLeaveDate() != null) {
@@ -241,10 +242,25 @@ public class StudentAttendanceService {
 			dailyAttendanceForm
 					.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
 			dailyAttendanceForm.setTrainingEndTime(attendanceManagementDto.getTrainingEndTime());
+			
 			if (attendanceManagementDto.getBlankTime() != null) {
 				dailyAttendanceForm.setBlankTime(attendanceManagementDto.getBlankTime());
 				dailyAttendanceForm.setBlankTimeValue(String.valueOf(
 						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));
+				//task26
+				//出勤
+				
+//				dailyAttendanceForm
+//				.setTrainingStartTimehour(attendanceUtil.extrahour(attendanceManagementDto.getTrainingStartTime()));
+//				dailyAttendanceForm
+//				.setTrainingStartTimeminute(attendanceUtil.extraminute(attendanceManagementDto.getTrainingStartTime()));
+		
+				//退勤
+				dailyAttendanceForm
+				.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
+				dailyAttendanceForm
+				.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
+				
 			}
 			dailyAttendanceForm.setStatus(String.valueOf(attendanceManagementDto.getStatus()));
 			dailyAttendanceForm.setNote(attendanceManagementDto.getNote());
@@ -353,4 +369,17 @@ public class StudentAttendanceService {
 		return enterCount > 0;
 
 	}
+	
 }
+	
+//	public void aaa (AttendanceForm form) {
+//		if (form.getAttendanceList() == null)return;
+//		
+//		for (DailyAttendanceForm DAform : form.getAttendanceList()) {
+//			String StartTime = String.format("%02d:%02d",
+//					String.valueOf(DAform.getTrainingStartTimehour())
+//					String.valueOf(DAform.getTrainingStartTimeminute()));
+//		}
+//	
+//	}
+//}

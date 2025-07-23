@@ -47,4 +47,13 @@ public class DailyAttendanceForm {
 	/** インデックス */
 	private String index;
 
-}
+	private Integer trainingStartTimehour;
+	private Integer trainingStartTimeminute;
+	private Integer trainingEndTimehour;
+	private Integer trainingEndTimeminute;
+		
+//	private String trainingStartTimehour;
+//	private String trainingStartTimeminute;
+//	private String trainingEndTimehour;
+//	private String trainingEndTimeminute;
+	}

@@ -1,8 +1,13 @@
 package jp.co.sss.lms.util;
 
 import java.text.ParseException;
+import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -147,14 +152,34 @@ public class AttendanceUtil {
 		return false;
 	}
 
-	public LinkedHashMap<String, String> sethour() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	//	public LinkedHashMap<String, String> sethour() {
+	//		
+	//		// TODO 自動生成されたメソッド・スタブ
+	//		return sethour();
+	//	}
+	//
+	//	public LinkedHashMap<String, String> setminute() {
+	//		// TODO 自動生成されたメソッド・スタブ
+	//		return setminute();
+	//	}
+
+	public static List<String> getNaknukeTime() {
+		return Arrays.asList("00:15");
 	}
 
-	public LinkedHashMap<String, String> setminute() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+	public static List<Integer> gethour() {
+		return IntStream.rangeClosed(0, 23).boxed().collect(Collectors.toList());
 	}
 
+	public static List<Integer> getminute() {
+		return Arrays.asList(0, 15, 30, 45);
+	}
+
+	public static Integer extrahour(LocalTime time) {
+		return time != null ? time.getHour() : null;
+	}
+
+	public static Integer extraminute(LocalTime time) {
+		return time != null ? time.getMinute() : null;
+	}
 }
