@@ -1,13 +1,8 @@
 package jp.co.sss.lms.util;
 
 import java.text.ParseException;
-import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -163,23 +158,85 @@ public class AttendanceUtil {
 	//		return setminute();
 	//	}
 
-	public static List<String> getNaknukeTime() {
-		return Arrays.asList("00:15");
-	}
+//	public static List<String> getNaknukeTime() {
+//		return Arrays.asList("00:15");
+//	}
+//
+//	public List<Integer> gethour() {
+//		return IntStream.rangeClosed(0, 23).boxed().collect(Collectors.toList());
+//	}
+//
+//	public static List<Integer> getminute() {
+//		return Arrays.asList(0, 15, 30, 45);
+//	}
+//
+//	public static Integer extrahour(LocalTime time) {
+//		return time != null ? time.getHour() : null;
+//	}
+//
+//	public static Integer extraminute(LocalTime time) {
+//		return time != null ? time.getMinute() : null;
+//	}
+//
+//	public static String formatTime(LocalDate date, String pattern) {
+//		return date.format(DateTimeFormatter.ofPattern(pattern, Locale.JAPAN));
+//	}
+//
+//	public static String formatTime(Duration durtion, String pattern) {
+//		long hours = durtion.toHours();
+//		long minute = durtion.minusHours(hours).toMinutes();
+//		return String.format("%02d:%02d", hours, minute);
+//
+//	}
+	public LinkedHashMap<Integer, Integer> StartTime() {
+		LinkedHashMap<Integer, Integer> a = new LinkedHashMap<>();
+		a.put(null, null);
+		for (int i = 15; i < 480;) {
+			int hour = i / 60;
+			int minute = i % 60;
+			Integer time;
 
-	public static List<Integer> gethour() {
-		return IntStream.rangeClosed(0, 23).boxed().collect(Collectors.toList());
-	}
+			if (hour == 0) {
+				time = minute;
 
-	public static List<Integer> getminute() {
-		return Arrays.asList(0, 15, 30, 45);
-	}
+			} else if (minute == 0) {
+				time = hour;
+			} else {
+				time = hour+ minute;
+			}
+			
 
-	public static Integer extrahour(LocalTime time) {
-		return time != null ? time.getHour() : null;
-	}
+			a.put(i, time);
 
-	public static Integer extraminute(LocalTime time) {
-		return time != null ? time.getMinute() : null;
+			i = i + 15;
+
+		}
+		return a;
+	}
+	
+	public LinkedHashMap<Integer, Integer> EndTime() {
+		LinkedHashMap<Integer, Integer> a = new LinkedHashMap<>();
+		a.put(null, null);
+		for (int i = 15; i < 480;) {
+			int hour = i / 60;
+			int minute = i % 60;
+			Integer time;
+
+			if (hour == 0) {
+				time = minute;
+
+			} else if (minute == 0) {
+				time = hour;
+			} else {
+				time = hour+ minute;
+			}
+			
+
+			a.put(i, time);
+
+			i = i + 15;
+
+		}
+		return a;
 	}
 }

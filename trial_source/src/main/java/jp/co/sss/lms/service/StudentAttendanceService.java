@@ -3,6 +3,7 @@ package jp.co.sss.lms.service;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -210,6 +211,7 @@ public class StudentAttendanceService {
 	 * @param attendanceManagementDtoList
 	 * @return 勤怠編集フォーム
 	 */
+	@SuppressWarnings({ "static-access", "unchecked" })
 	public AttendanceForm setAttendanceForm(
 			List<AttendanceManagementDto> attendanceManagementDtoList) {
 
@@ -220,9 +222,8 @@ public class StudentAttendanceService {
 		attendanceForm.setLeaveFlg(loginUserDto.getLeaveFlg());
 		attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
 		//Task26
-		attendanceForm.setNakanukeTime(attendanceUtil.getNaknukeTime());
-		attendanceForm.setHour(attendanceUtil.gethour());
-		attendanceForm.setMinute(attendanceUtil.getminute());
+		attendanceForm.setStartTime((LinkedHashMap<Integer,Integer >) attendanceUtil.StartTime());
+		attendanceForm.setEndTime((LinkedHashMap<Integer,Integer>) attendanceUtil.EndTime());
 
 		// 途中退校している場合のみ設定
 		if (loginUserDto.getLeaveDate() != null) {
@@ -246,22 +247,52 @@ public class StudentAttendanceService {
 			if (attendanceManagementDto.getBlankTime() != null) {
 				dailyAttendanceForm.setBlankTime(attendanceManagementDto.getBlankTime());
 				dailyAttendanceForm.setBlankTimeValue(String.valueOf(
-						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));
-				//task26
-				//出勤
-				
-//				dailyAttendanceForm
-//				.setTrainingStartTimehour(attendanceUtil.extrahour(attendanceManagementDto.getTrainingStartTime()));
-//				dailyAttendanceForm
-//				.setTrainingStartTimeminute(attendanceUtil.extraminute(attendanceManagementDto.getTrainingStartTime()));
-		
-				//退勤
-				dailyAttendanceForm
-				.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
-				dailyAttendanceForm
-				.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
-				
+						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));			
 			}
+			
+			/*
+			 * kokokara
+			 */
+			if (attendanceManagementDto.getTrainingStartTime() != null) {
+				dailyAttendanceForm.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
+				dailyAttendanceForm.setTrainingStartTimehourValue(String.valueOf(
+						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));
+			}
+			if (attendanceManagementDto.getTrainingStartTime() != null) {
+				dailyAttendanceForm.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
+				dailyAttendanceForm.setTrainingStartTimeminuteValue(String.valueOf(
+						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));
+			}
+			if (attendanceManagementDto.getTrainingStartTime() != null) {
+				dailyAttendanceForm.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
+				dailyAttendanceForm.setTrainingEndTimehourValue(String.valueOf(
+						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));
+			}
+			if (attendanceManagementDto.getTrainingStartTime() != null) {
+				dailyAttendanceForm.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
+				dailyAttendanceForm.setTrainingEndTimehourValue(String.valueOf(
+						attendanceUtil.calcBlankTime(attendanceManagementDto.getBlankTime())));
+			}
+			/*
+			 *ここから 
+			 */
+			//task26
+			//出勤
+			
+//			dailyAttendanceForm
+//			.setTrainingStartTimehour(attendanceUtil.extrahour(attendanceManagementDto.getStartTime()));
+//			dailyAttendanceForm
+//			.setTrainingStartTimeminute(attendanceUtil.extraminute(attendanceManagementDto.getStartTime()));
+//	
+//			//退勤
+//			dailyAttendanceForm
+//			.setTrainingEndTimehour(attendanceUtil.extrahour(attendanceManagementDto.getEndTime()));
+//			dailyAttendanceForm
+//			.setTrainingEndTimeminute(attendanceUtil.extrahour(attendanceManagementDto.getEndTime()));
+			
+			/*
+			 * ここまで
+			 */
 			dailyAttendanceForm.setStatus(String.valueOf(attendanceManagementDto.getStatus()));
 			dailyAttendanceForm.setNote(attendanceManagementDto.getNote());
 			dailyAttendanceForm.setSectionName(attendanceManagementDto.getSectionName());
