@@ -36,14 +36,17 @@ public class AttendanceForm {
 	
 	//時間マップ
 //	private Map<String, String> hour;
-	//分マップ
+//	//分マップ
 //	private Map<String, String> minute;
-//	private List<Integer> hour;
-//	private List<Integer> minute;
+	private List<Integer> hour;
+	private List<Integer> minute;
 	
-	private LinkedHashMap<Integer, Integer> StartTime;
-	
-	private LinkedHashMap<Integer, Integer> EndTime;
-	
+//	private LinkedHashMap<Integer, String> StartTimehour;
+//	
+//	private LinkedHashMap<Integer, String> EndTimehour;
+//	
+//	private LinkedHashMap<Integer, String> StartTimeminute;
+//	private LinkedHashMap<Integer, String> EndTimeminuute;
+//	
 
 }
