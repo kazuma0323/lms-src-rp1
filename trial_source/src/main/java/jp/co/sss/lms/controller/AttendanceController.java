@@ -49,7 +49,7 @@ public class AttendanceController {
 
 		//未入力
 		Boolean isnotEnterCount = studentAttendanceService.notEnterCount(loginUserDto.getLmsUserId());
-		model.addAttribute("a",isnotEnterCount);
+		model.addAttribute("a", isnotEnterCount);
 		return "attendance/detail";
 	}
 
@@ -118,11 +118,10 @@ public class AttendanceController {
 		// 勤怠フォームの生成
 		AttendanceForm attendanceForm = studentAttendanceService
 				.setAttendanceForm(attendanceManagementDtoList);
-		
-//Task26
+
+		//Task26
 
 		model.addAttribute("attendanceForm", attendanceForm);
-
 		return "attendance/update";
 	}
 

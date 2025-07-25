@@ -53,10 +53,10 @@ public class DailyAttendanceForm {
 	private Integer trainingEndTimehour;
 	private Integer trainingEndTimeminute;
 	//画面表示用
-//	private String trainingStartTimehourValue;
-//	private String trainingStartTimeminuteValue;
-//	private String trainingEndTimehourValue;
-//	private String trainingEndTimeminuteValue;
+	private String trainingStartTimehourValue;
+	private String trainingStartTimeminuteValue;
+	private String trainingEndTimehourValue;
+	private String trainingEndTimeminuteValue;
 		
 //	private String trainingStartTimehour;
 //	private String trainingStartTimeminute;

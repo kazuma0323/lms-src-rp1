@@ -1,17 +1,8 @@
 package jp.co.sss.lms.util;
 
 import java.text.ParseException;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -167,137 +158,124 @@ public class AttendanceUtil {
 	//		return setminute();
 	//	}
 
-	public static List<String> getNaknukeTime() {
-		return Arrays.asList("00:15");
+	/*
+	 * ここから
+	 */
+	//	public static List<String> getNaknukeTime() {
+	//		return Arrays.asList("00:15");
+	//	}
+	//
+	//	public static List<Integer> gethour() {
+	//		return IntStream.rangeClosed(0, 23).boxed().collect(Collectors.toList());
+	//	}
+	//
+	//	public static List<Integer> getminute() {
+	//		return Arrays.asList(0, 15, 30, 45);
+	//	}
+	//
+	//	public static Integer extrahour(LocalTime time) {
+	//		return time != null ? time.getHour() : null;
+	//	}
+	//
+	//	public static Integer extraminute(LocalTime time) {
+	//		return time != null ? time.getMinute() : null;
+	//	}
+	//
+	//	public static String formatTime(LocalDate date, String pattern) {
+	//		return date.format(DateTimeFormatter.ofPattern(pattern, Locale.JAPAN));
+	//	}
+	//
+	//	public static String formatTime(Duration durtion, String pattern) {
+	//		long hours = durtion.toHours();
+	//		long minute = durtion.minusHours(hours).toMinutes();
+	//		return String.format("%02d:%02d", hours, minute);
+	//
+	//	}
+	/*
+	 * ここまで
+	 */
+
+	public LinkedHashMap<Integer, String> setStartTimehour() {
+		LinkedHashMap<Integer, String> a = new LinkedHashMap<>();
+		a.put(null, "");
+		for (int i = 0; i < 24;) {
+			int hour = i % 24;
+			String time;
+
+			if (hour <= 9) {
+				time = "0" + hour;
+			} else {
+				time = hour + "";
+			}
+
+			a.put(i, time);
+
+			i = ++i;
+
+		}
+		return a;
 	}
 
-	public static List<Integer> gethour() {
-		return IntStream.rangeClosed(0, 23).boxed().collect(Collectors.toList());
+	public LinkedHashMap<Integer, String> setEndTimehour() {
+		LinkedHashMap<Integer, String> a = new LinkedHashMap<>();
+		a.put(null, "");
+		for (int i = 0; i < 24;) {
+			int hour = i % 24;
+			String time;
+
+			if (hour <= 9) {
+				time = "0" + hour;
+			} else {
+				time = hour + "";
+			}
+
+			a.put(i, time);
+
+			i = ++i;
+
+		}
+		return a;
 	}
 
-	public static List<Integer> getminute() {
-		return Arrays.asList(0, 15, 30, 45);
+	public LinkedHashMap<Integer, String> setStartTimeminute() {
+		LinkedHashMap<Integer, String> a = new LinkedHashMap<>();
+		a.put(null, "");
+		for (int i = 0; i < 60;) {
+			int minute = i % 60;
+			String time;
+			
+			if (minute <= 9) {
+				time = "0" + minute;
+			} else {
+				time = minute + "";
+			}
+
+			a.put(i, time);
+
+			i = ++i;
+
+		}
+		return a;
 	}
 
-	public static Integer extrahour(LocalTime time) {
-		return time != null ? time.getHour() : null;
-	}
+	public LinkedHashMap<Integer, String> setEndTimeminute() {
+		LinkedHashMap<Integer, String> b = new LinkedHashMap<>();
+		b.put(null, "");
+		for (int i = 1; i < 60;) {
+			int minute = i % 60;
+			String time;
 
-	public static Integer extraminute(LocalTime time) {
-		return time != null ? time.getMinute() : null;
-	}
+			if (minute <= 9) {
+				time = "0" + minute;
+			} else {
+				time = minute + "";
+			}
 
-	public static String formatTime(LocalDate date, String pattern) {
-		return date.format(DateTimeFormatter.ofPattern(pattern, Locale.JAPAN));
-	}
+			b.put(i, time);
 
-	public static String formatTime(Duration durtion, String pattern) {
-		long hours = durtion.toHours();
-		long minute = durtion.minusHours(hours).toMinutes();
-		return String.format("%02d:%02d", hours, minute);
+			i = ++i;
 
+		}
+		return b;
 	}
-//	public LinkedHashMap<Integer, String> setStartTimehour() {
-//		LinkedHashMap<Integer, String> a = new LinkedHashMap<>();
-//		a.put(null, "");
-//		for (int i = 15; i < 480;) {
-//			int hour = i / 60;
-//			int minute = i % 60;
-//			String time;
-//
-//			if (hour == 0) {
-//				time = minute + "分";
-//
-//			} else if (minute == 0) {
-//				time = hour + "時間";
-//			} else {
-//				time = hour + "時" + minute + "分";
-//			}
-//
-//			a.put(i, time);
-//
-//			i = i + 15;
-//
-//		}
-//		return a;
-//	}
-//	
-//	public LinkedHashMap<Integer, String> setEndTimehour() {
-//		LinkedHashMap<Integer, String> b = new LinkedHashMap<>();
-//		b.put(null, "");
-//		for (int i = 15; i < 480;) {
-//			int hour = i / 60;
-//			int minute = i % 60;
-//			String time;
-//
-//			if (hour == 0) {
-//				time = minute + "分";
-//
-//			} else if (minute == 0) {
-//				time = hour + "時間";
-//			} else {
-//				time = hour + "時" + minute + "分";
-//			}
-//
-//			b.put(i, time);
-//
-//			i = i + 15;
-//
-//		}
-//		return b;
-//	}
-//	
-//	
-//	
-//	
-//	
-//	
-//	public LinkedHashMap<Integer, String> setStartTimeminute() {
-//		LinkedHashMap<Integer, String> a = new LinkedHashMap<>();
-//		a.put(null, "");
-//		for (int i = 15; i < 480;) {
-//			int hour = i / 60;
-//			int minute = i % 60;
-//			String time;
-//
-//			if (hour == 0) {
-//				time = minute + "分";
-//
-//			} else if (minute == 0) {
-//				time = hour + "時間";
-//			} else {
-//				time = hour + "時" + minute + "分";
-//			}
-//
-//			a.put(i, time);
-//
-//			i = i + 15;
-//
-//		}
-//		return a;
-//	}
-//	public LinkedHashMap<Integer, String> setEndTimeminute() {
-//		LinkedHashMap<Integer, String> b = new LinkedHashMap<>();
-//		b.put(null, "");
-//		for (int i = 15; i < 480;) {
-//			int hour = i / 60;
-//			int minute = i % 60;
-//			String time;
-//
-//			if (hour == 0) {
-//				time = minute + "分";
-//
-//			} else if (minute == 0) {
-//				time = hour + "時間";
-//			} else {
-//				time = hour + "時" + minute + "分";
-//			}
-//
-//			b.put(i, time);
-//
-//			i = i + 15;
-//
-//		}
-//		return b;
-//	}
 }
